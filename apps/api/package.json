@@ -1,0 +1,35 @@
+{
+  "name": "@thinker/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch --env-file=../../.env src/entrypoints/http.ts",
+    "dev:worker": "tsx watch --env-file=../../.env src/entrypoints/worker.ts",
+    "start": "node --env-file=../../.env dist/http.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx --env-file=../../.env src/infrastructure/database/migrate.ts",
+    "db:seed": "tsx --env-file=../../.env src/infrastructure/database/seed.ts"
+  },
+  "dependencies": {
+    "@thinker/contracts": "workspace:*",
+    "better-auth": "^1.7.5",
+    "drizzle-orm": "^0.45.3",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "pg": "^8.23.0",
+    "pino": "^10.3.1",
+    "pino-http": "^11.0.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11",
+    "tsup": "^8.5.1",
+    "tsx": "^4.23.15"
+  }
+}

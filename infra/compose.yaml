@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: thinker
+      POSTGRES_USER: thinker
+      POSTGRES_PASSWORD: 12345678
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U thinker -d thinker"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - thinker_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  thinker_postgres_data:
+
